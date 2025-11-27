@@ -92,6 +92,10 @@ public class ArticleService {
             throw new IllegalArgumentException("title is already exists.");
         }
 
+        if (tags == null || tags.isEmpty()) {
+            throw new IllegalArgumentException("at least one tag is required.");
+        }
+
         return articleRepository.save(article, Objects.requireNonNullElseGet(tags, Set::of));
     }
 
